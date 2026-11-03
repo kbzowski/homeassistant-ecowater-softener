@@ -7,6 +7,6 @@
   "documentation": "https://github.com/barleybobs/homeassistant-ecowater-softener/",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/barleybobs/homeassistant-ecowater-softener/issues",
-  "requirements": ["ecowater-softener==2.2.1"],
-  "version": "4.1.0"
+  "requirements": ["ecowater-softener @ https://github.com/kbzowski/ecowater-softener/archive/9b597d07f4b0244bcd1f29fd41211456580df32a.zip"],
+  "version": "4.2.0"
 }

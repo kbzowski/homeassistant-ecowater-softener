@@ -38,7 +38,8 @@ from .const import (
     RECHARGE_ENABLED,
     RECHARGE_STATUS,
     ROCK_REMOVED,
-    ROCK_REMOVED_DAILY_AVERAGE
+    ROCK_REMOVED_DAILY_AVERAGE,
+    NEXT_RECHARGE_TIME
 )
 
 from .coordinator import EcowaterDataCoordinator
@@ -141,6 +142,12 @@ SENSOR_TYPES: tuple[EcowaterSensorEntityDescription, ...] = (
         device_class=SensorDeviceClass.WEIGHT,
         state_class=SensorStateClass.TOTAL,
         native_unit_of_measurement=UnitOfMass.POUNDS
+    ),
+    EcowaterSensorEntityDescription(
+        key=NEXT_RECHARGE_TIME,
+        name="Next Recharge Time",
+        icon="mdi:clock-outline",
+        device_class=SensorDeviceClass.TIMESTAMP
     ),
 )
 

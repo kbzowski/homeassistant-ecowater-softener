@@ -22,7 +22,7 @@ async def async_setup_entry(
     hass.data[DOMAIN][entry.entry_id] = hass_data
 
     # Forward the setup to the sensor platform.
-    await hass.config_entries.async_forward_entry_setups(entry, ["sensor"])
+    await hass.config_entries.async_forward_entry_setups(entry, ["sensor", "button"])
     
     return True
 
@@ -40,7 +40,7 @@ async def async_unload_entry(
     """Unload a config entry."""
     unload_ok = all(
         await asyncio.gather(
-            *[hass.config_entries.async_forward_entry_unload(entry, "sensor")]
+            *[hass.config_entries.async_forward_entry_unload(entry, platform) for platform in ("sensor", "button")]
         )
     )
     # Remove options_update_listener.

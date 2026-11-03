@@ -9,6 +9,26 @@
 
 `ecowater_softener` is a _custom component_ for [Home Assistant](https://www.home-assistant.io/). The integration allows you to pull data from your Ecowater water softener.
 
+## About this fork
+
+This is a fork of [barleybobs/homeassistant-ecowater-softener](https://github.com/barleybobs/homeassistant-ecowater-softener) (v4.1.0). It uses the [kbzowski/ecowater-softener](https://github.com/kbzowski/ecowater-softener) library fork and adds:
+
+| Entity | What it does |
+|---|---|
+| `sensor.<device>_next_recharge_time` | Timestamp of the next time the softener checks whether to recharge, taken from the recharge time set on the device. The softener only recharges then if it needs to. |
+| `button.<device>_schedule_recharge` | Schedules a recharge for the next recharge time. |
+| `button.<device>_recharge_now` | Starts a recharge immediately. Water is not softened while it runs (about 2 hours). |
+
+`Last Recharge Date` no longer shows the day after the real recharge between midnight and midday.
+
+The library is pinned to a commit of the fork in `manifest.json`. Home Assistant does not upgrade a package that is already installed, so when replacing the upstream integration, install the library once by hand and restart:
+
+```bash
+docker exec homeassistant uv pip install --system "ecowater-softener @ <URL from manifest.json>"
+```
+
+Install this fork through HACS as a custom repository (`https://github.com/kbzowski/homeassistant-ecowater-softener`, type Integration) or copy the folder manually as described below.
+
 ## Installation
 
 #### HACS
